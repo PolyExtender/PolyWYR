@@ -216,19 +216,91 @@
         "options": ["Everyone Knows Your Thoughts", "No One Knows Your Thoughts"]
     },
     {
-    "question": "Would you rather lick the bottom of a worn shoe or eat from a stranger's feet?",
-    "options": ["Lick the bottom of a worn shoe", "Eat from a stranger's feet"]
+        "question": "Would you rather lick the bottom of a worn shoe or eat from a stranger's feet?",
+        "options": ["Lick the bottom of a worn shoe", "Eat from a stranger's feet"]
     },
     {
-    "question": "Would you rather find the true love of your life or be friends with all of your favorite celebrities?",
-    "options": ["Find the true love of your life", "Be friends with all of your favorite celebrities"]
+        "question": "Would you rather find the true love of your life or be friends with all of your favorite celebrities?",
+        "options": ["Find the true love of your life", "Be friends with all of your favorite celebrities"]
     },
     {
-    "question": "Would you rather fall down a flight of stairs or get thrown out of a moving vehicle at 50mph?",
-    "options": ["Fall down a flight of stairs", "Get thrown out of a moving vehicle at 50mph"]
+        "question": "Would you rather fall down a flight of stairs or get thrown out of a moving vehicle at 50mph?",
+        "options": ["Fall down a flight of stairs", "Get thrown out of a moving vehicle at 50mph"]
     },
     {
         "question": "Would you rather have the power of super strength or the ability to breathe underwater?",
         "options": ["Super Strength", "Breathe Underwater"]
+    },
+    {
+        "question": "Would you rather have the ability to speak to animals or speak all human languages fluently?",
+        "options": ["Speak to Animals", "Speak All Human Languages Fluently"]
+    },
+    {
+        "question": "Would you rather live without the internet or without air conditioning/heating?",
+        "options": ["Without Internet", "Without Air Conditioning/Heating"]
+    },
+    {
+        "question": "Would you rather have the ability to see 10 minutes into the future or 10 minutes into the past?",
+        "options": ["See 10 Minutes into the Future", "See 10 Minutes into the Past"]
+    },
+    {
+        "question": "Would you rather be able to eat whatever you want without gaining weight or never need to sleep again?",
+        "options": ["Eat Without Gaining Weight", "Never Need Sleep"]
+    },
+    {
+        "question": "Would you rather have free flights for life or free meals at restaurants for life?",
+        "options": ["Free Flights for Life", "Free Restaurant Meals for Life"]
+    },
+    {
+        "question": "Would you rather be stuck in an elevator for 24 hours with your celebrity crush or your worst enemy?",
+        "options": ["Celebrity Crush", "Worst Enemy"]
+    },
+    {
+        "question": "Would you rather have the ability to be completely invisible or be able to fly?",
+        "options": ["Be Completely Invisible", "Be Able to Fly"]
+    },
+    {
+        "question": "Would you rather live in a house with no windows or a house with no doors?",
+        "options": ["House With No Windows", "House With No Doors"]
+    },
+    {
+        "question": "Would you rather have the ability to change your appearance at will or never age?",
+        "options": ["Change Appearance", "Never Age"]
+    },
+    {
+        "question": "Would you rather live in a world with no coffee or no chocolate?",
+        "options": ["No Coffee", "No Chocolate"]
+    },
+    {
+        "question": "Would you rather have a photographic memory or the ability to forget anything at will?",
+        "options": ["Photographic Memory", "Forget at Will"]
+    },
+    {
+        "question": "Would you rather be able to control your dreams or never have nightmares?",
+        "options": ["Control Dreams", "No Nightmares"]
+    },
+    {
+        "question": "Would you rather have a personal robot assistant or a magic wand?",
+        "options": ["Personal Robot Assistant", "Magic Wand"]
+    },
+    {
+        "question": "Would you rather always know when someone is lying or always get away with lying?",
+        "options": ["Know When Someone Lies", "Get Away with Lying"]
+    },
+    {
+        "question": "Would you rather live in a floating city or a city underground?",
+        "options": ["Floating City", "Underground City"]
+    },
+    {
+        "question": "Would you rather have the ability to instantly master any sport or any academic subject?",
+        "options": ["Master Any Sport", "Master Any Subject"]
+    },
+    {
+        "question": "Would you rather have a time machine that only goes forward or one that only goes backward?",
+        "options": ["Forward Time Machine", "Backward Time Machine"]
+    },
+    {
+        "question": "Would you rather have the power to make anyone laugh or make anyone fall in love with you?",
+        "options": ["Make Anyone Laugh", "Make Anyone Fall in Love"]
     }
 ]
