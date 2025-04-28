@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Would You Rather?</title>
+    <link rel="stylesheet" href="https://polyextended.github.io/nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.imgur.com/kHOeihm.png" id="favicon">
+    <meta name="twitter:image" content="https://i.imgur.com/kHOeihm.png" id="twitter-image">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a237e, #0d47a1);
+            color: white;
+            min-height: 100vh;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .game-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #ffeb3b;
+        }
+        
+        #question {
+            font-size: 1.5rem;
+            min-height: 80px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        #answerButtons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        #answerButtons button {
+            padding: 15px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-transform: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            min-height: 60px;
+        }
+        
+        #answerButtons button:nth-child(1) {
+            background-color: #f44336;
+        }
+        
+        #answerButtons button:nth-child(2) {
+            background-color: #2196f3;
+        }
+        
+        #answerButtons button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+        
+        #getQuestionBtn {
+            background-color: #ffeb3b;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0 30px;
+            height: 50px;
+            border-radius: 25px;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        #getQuestionBtn:hover {
+            background-color: #ffd600;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        
+        #answerResult {
+            text-align: center;
+            font-size: 1.3rem;
+            min-height: 40px;
+            margin: 20px 0;
+            font-weight: 500;
+            color: #81d4fa;
+        }
+        
+        .score-container {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            width: 150px;
+            margin: 20px auto;
+            font-size: 1.2rem;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        #userScore {
+            font-weight: 700;
+            color: #ffeb3b;
+        }
+        
+        .game-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .game-icon {
+            font-size: 2.5rem;
+            color: #ffeb3b;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 20px 0;
+        }
+        
+        .loader {
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 5px solid #ffeb3b;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.2) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            #question {
+                font-size: 1.2rem;
+                min-height: 60px;
+            }
+            
+            .game-container {
+                padding: 20px;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-dice-d20 me-2"></i>PolyExtender
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="https://polyextender.github.io/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://polyextender.github.io/PolyStreamLookup/">StreamLookup</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="https://polyextender.github.io/PolyCosmetic/">PolyCosmetic</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="game-container animate__animated animate__fadeIn">
+        <div class="game-title-container">
+            <i class="fas fa-question-circle game-icon animate__animated animate__pulse animate__infinite"></i>
+            <h1>Would You Rather?</h1>
+            <i class="fas fa-question-circle game-icon animate__animated animate__pulse animate__infinite"></i>
+        </div>
+        
+        <button id="getQuestionBtn" class="waves-effect waves-light btn" onclick="getQuestion()">
+            <i class="fas fa-random"></i> Get a Question
+        </button>
+        
+        <div class="loader" id="loader"></div>
+        
+        <div id="question" class="animate__animated" role="region" aria-live="polite"></div>
+        
+        <div id="answerButtons" class="animate__animated"></div>
+        
+        <p id="answerResult" class="animate__animated"></p>
+        
+        <div class="score-container animate__animated animate__fadeIn">
+            <i class="fas fa-trophy"></i> Score: <span id="userScore">0</span>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© <script>document.write(new Date().getFullYear())</script> PolyExtender - Fun games for all players</p>
+    </footer>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let userScore = localStorage.getItem('userScore') || 0;
+    let currentQuestion;
+
+    // API settings for RapidAPI
+    const settings = {
+        async: true,
+        crossDomain: true,
+        url: 'https://would-you-rather.p.rapidapi.com/wyr/random',
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': 'b4a2089a29mshdbea6dcb50ba55fp1f4f7djsn15e92e389662',
+            'x-rapidapi-host': 'would-you-rather.p.rapidapi.com'
+        }
+    };
+
+    // Show loader while fetching question
+    document.getElementById('loader').style.display = 'block';
+
+    // Fetch question on page load
+    getQuestion();
+
+    function getQuestion() {
+        // Reset and animate
+        document.getElementById('answerResult').innerText = '';
+        document.getElementById('question').classList.remove('animate__fadeIn');
+        document.getElementById('answerButtons').classList.remove('animate__fadeIn');
+        document.getElementById('loader').style.display = 'block';
+        document.getElementById('question').innerText = '';
+        document.getElementById('answerButtons').innerHTML = '';
+
+        // Fetch question from RapidAPI
+        $.ajax(settings)
+            .done(function (response) {
+                // Validate response
+                if (!response || !Array.isArray(response) || response.length === 0 || !response[0].question) {
+                    throw new Error('Invalid API response');
+                }
+
+                currentQuestion = response[0];
+                document.getElementById('loader').style.display = 'none';
+
+                // Parse question to extract options
+                let questionText = currentQuestion.question;
+                let options = parseQuestionOptions(questionText);
+
+                // Display question with animation
+                document.getElementById('question').innerText = questionText;
+                document.getElementById('question').classList.add('animate__fadeIn');
+
+                // Generate answer buttons
+                const buttonHTML = options.map((option, index) =>
+                    `<button class="waves-effect waves-light btn animate__animated animate__fadeInUp" 
+                     style="animation-delay: ${index * 0.2}s" 
+                     onclick="answerQuestion('${option}')">
+                     ${option}
+                     </button>`
+                ).join('');
+
+                document.getElementById('answerButtons').innerHTML = buttonHTML;
+                document.getElementById('answerButtons').classList.add('animate__fadeIn');
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                console.error('Error fetching question:', textStatus, errorThrown);
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('question').innerHTML = 
+                    "<span style='color:#ff6b6b'>Oops! Couldn't load question. <button onclick='getQuestion()'>Retry</button></span>";
+                document.getElementById('question').classList.add('animate__fadeIn');
+            });
+    }
+
+    // Parse question text to extract two options
+    function parseQuestionOptions(question) {
+        // Remove "Would you rather" prefix and split at "or"
+        let cleanQuestion = question.replace(/^Would you rather\s*/i, '').trim();
+        let options = cleanQuestion.split(/\s*,\s*or\s*/i);
+
+        // Ensure exactly two options
+        if (options.length !== 2) {
+            // Fallback: use generic options if parsing fails
+            return ['Option 1', 'Option 2'];
+        }
+
+        // Clean up options (remove trailing punctuation, trim)
+        return options.map(opt => opt.replace(/[?.!]$/, '').trim());
+    }
+
+    function answerQuestion(userAnswer) {
+        // Disable all buttons to prevent multiple clicks
+        const buttons = document.querySelectorAll('#answerButtons button');
+        buttons.forEach(button => {
+            button.disabled = true;
+            if (button.textContent.trim() === userAnswer) {
+                button.style.backgroundColor = '#4caf50'; // Highlight selected answer
+                button.classList.add('animate__pulse');
+            } else {
+                button.style.opacity = '0.5';
+            }
+        });
+
+        // Process the user's answer with animation
+        document.getElementById('answerResult').innerText = '';
+        document.getElementById('answerResult').classList.remove('animate__fadeIn');
+
+        setTimeout(() => {
+            document.getElementById('answerResult').innerText = `You chose: ${userAnswer}`;
+            document.getElementById('answerResult').classList.add('animate__fadeIn');
+            playSound('success');
+
+            // Increment the score with animation
+            userScore++;
+            localStorage.setItem('userScore', userScore);
+
+            const scoreElement = document.getElementById('userScore');
+            scoreElement.classList.add('animate__animated', 'animate__heartBeat');
+            scoreElement.innerText = userScore;
+
+            setTimeout(() => {
+                scoreElement.classList.remove('animate__animated', 'animate__heartBeat');
+            }, 1000);
+        }, 300);
+    }
+
+    // Initialize score display
+    document.getElementById('userScore').innerText = userScore;
+
+    // Add sound effects
+    function playSound(type) {
+        const audio = new Audio();
+        audio.volume = 0.3;
+        if (type === 'click') {
+            audio.src = 'https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3';
+        } else if (type === 'success') {
+            audio.src = 'https://assets.mixkit.co/active_storage/sfx/2062/2062-preview.mp3';
+        }
+        audio.play();
+    }
+
+    // Add button click sounds
+    document.getElementById('getQuestionBtn').addEventListener('click', () => playSound('click'));
+  </script>
+</body>
+</html>
